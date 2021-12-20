@@ -29,4 +29,11 @@ describe('<Button />', () => {
       padding: '0.8rem 4.8rem'
     })
   })
+
+  it('should render fullWidth button when passed', () => {
+    renderWithTheme(<Button fullWidth>Comprar</Button>)
+    expect(screen.getByRole('button', { name: /Comprar/i })).toHaveStyle({
+      width: '100%'
+    })
+  })
 })
