@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
+import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
 
 import Button from '.'
 
@@ -30,10 +31,19 @@ describe('<Button />', () => {
     })
   })
 
-  it('should render fullWidth button when passed', () => {
-    renderWithTheme(<Button fullWidth>Comprar</Button>)
-    expect(screen.getByRole('button', { name: /Comprar/i })).toHaveStyle({
+  it('should render a fullWidth version', () => {
+    renderWithTheme(<Button fullWidth>Buy now</Button>)
+    expect(screen.getByRole('button', { name: /Buy now/i })).toHaveStyle({
       width: '100%'
     })
+  })
+
+  it('should render an icon version', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />}>Buy now</Button>
+    )
+
+    expect(screen.getByText(/buy now/i)).toBeInTheDocument()
+    expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 })
