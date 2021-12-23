@@ -92,10 +92,17 @@ export const MenuFull = styled.nav<MenuFullProps>`
   `}
 `
 
-export const MenuNav = styled.div``
+export const MenuNav = styled.div`
+  ${({ theme }) => css`
+    ${media.greaterThan('medium')`
+			margin-left: ${theme.spacings.small};
+		`}
+  `}
+`
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
+    color: ${theme.colors.white};
     position: relative;
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
