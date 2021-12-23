@@ -32,4 +32,31 @@ describe('<Menu />', () => {
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
     expect(fullMenuElement).toHaveStyle({ opacity: 0 })
   })
+
+  it('should render register box when logged out', () => {
+    renderWithTheme(<Menu />)
+    //QUANDO TEMOS CERTEZA QUE IRÁ TER O TEXTO, UTILIZAMOS O GETBYTEXT, QUANDO NÃO TEMOS CERTEZA UTILIZAMOS "queryByText"
+    expect(screen.getByText(/Log in now/i)).toBeInTheDocument()
+    expect(screen.getByText(/sign up/i)).toBeInTheDocument()
+    expect(screen.queryByText(/my account/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument()
+  })
+
+  it('should render wishlist when logged in', () => {
+    renderWithTheme(<Menu username="Gabriel" />)
+    //QUANDO TEMOS CERTEZA QUE IRÁ TER O TEXTO, UTILIZAMOS O GETBYTEXT, QUANDO NÃO TEMOS CERTEZA UTILIZAMOS "queryByText"
+    expect(screen.getByText(/my account/i)).toBeInTheDocument()
+    expect(screen.getByText(/wishlist/i)).toBeInTheDocument()
+    expect(screen.queryByText(/Log in now/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
+  })
+
+  /* it('should show wishlight and account when logged in', () => {
+    renderWithTheme(<Menu username="will" />)
+
+    expect(screen.getByText(/my account/i)).toBeInTheDocument()
+    expect(screen.getByText(/wishlist/i)).toBeInTheDocument()
+    expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
+  }) */
 })
