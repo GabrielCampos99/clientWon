@@ -12,4 +12,4 @@ export default {
   }
 } as Meta
 
-export const Default: Story = () => <Menu />
+export const Default: Story = (args) => <Menu {...args} />
