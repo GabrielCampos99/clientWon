@@ -1,7 +1,19 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
+import * as RibbonStyles from 'components/Ribbon/styles'
 
-export const Wrapper = styled.main``
+export const Wrapper = styled.main`
+  position: relative;
+
+  ${media.lessThan('large')`
+    ${RibbonStyles.Wrapper} {
+      right: 0;
+      &::before {
+        display: none;
+      }
+    }
+  `}
+`
 
 type ImageProps = {
   src: string
