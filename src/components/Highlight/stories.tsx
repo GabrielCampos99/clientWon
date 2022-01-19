@@ -1,15 +1,14 @@
-import { Story, Meta } from '@storybook/react'
-import Highlight from '.'
-
+import { Story, Meta } from '@storybook/react/types-6-0'
+import Highlight, { HighlightProps } from '.'
 export default {
   title: 'Highlight',
   component: Highlight,
   args: {
     title: 'Read Dead is back!',
     subtitle: 'Come see John’s new adventures',
-    buttonLink: '/games/rdr2',
+    backgroundImage: '/img/red-dead-img.png',
     buttonLabel: 'Buy now',
-    backgroundImage: '/img/red-dead-img.png'
+    buttonLink: '/games/rdr2'
   }
 } as Meta
 
